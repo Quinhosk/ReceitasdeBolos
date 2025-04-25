@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receitas de Bolos Simples!</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+line-height: 1.6;
+color: #333;
+max-width: 900px;
+margin: 0 auto;
+padding: 2rem;
+background: linear-gradient(135deg, #fef6f4, #e6e9f0);
+min-height: 100vh;
+}
+
+header {
+background: linear-gradient(90deg, #ff6b6b, #ffb88c);
+padding: 2.5rem;
+text-align: center;
+margin-bottom: 2.5rem;
+border-radius: 15px;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+position: relative;
+overflow: hidden;
+}
+
+header::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+opacity: 0.5;
+}
+
+header h1 {
+font-family: 'Playfair Display', serif;
+font-size: 3rem;
+color: #fff;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+position: relative;
+z-index: 1;
+}
+
+.recipe {
+margin-bottom: 1.5rem;
+padding: 1.5rem;
+background: #fff;
+border-radius: 15px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+transition: transform 0.4s ease, box-shadow 0.4s ease;
+overflow: hidden;
+}
+
+.recipe[open] {
+transform: translateY(-3px);
+}
+
+.recipe summary {
+font-family: 'Playfair Display', serif;
+font-size: 2rem;
+color: #d6336c;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+outline: none;
+background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+border-radius: 10px;
+transition: color 0.3s ease, background 0.3s ease;
+}
+
+.recipe summary:hover {
+color: #b02655;
+background: linear-gradient(90deg, #ff8589, #f7b8a1);
+}
+
+.recipe[open] summary {
+border-bottom: 3px solid #ffb88c;
+}
+
+.recipe img {
+max-width: 100%;
+height: auto;
+border-radius: 10px;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+display: block;
+margin: 0 auto 1.5rem;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe img:hover {
+transform: scale(1.05);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.recipe h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+color: #333;
+margin-top: 1rem;
+margin-bottom: 0.5rem;
+border-bottom: 2px solid #ffb88c;
+padding-bottom: 0.3rem;
+}
+
+.recipe ul, .recipe ol {
+margin-left: 1.5rem;
+margin-bottom: 1rem;
+color: #444;
+font-size: 1rem;
+}
+
+.recipe ul li, .recipe ol li {
+margin-bottom: 0.5rem;
+position: relative;
+padding-left: 0.5rem;
+}
+
+.recipe ul li::before {
+content: '•';
+color: #ff6b6b;
+position: absolute;
+left: 0;
+}
+
+footer {
+text-align: center;
+padding: 2rem;
+background: linear-gradient(90deg, #ff6b6b, #ffb88c);
+margin-top: 2.5rem;
+border-radius: 15px;
+color: #fff;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+font-family: 'Playfair Display', serif;
+font-size: 1.1rem;
+}
+
+footer::before {
+content: '🍰';
+display: block;
+font-size: 2rem;
+margin-bottom: 0.5rem;
+}
+
+#back-to-top {
+position: fixed;
+bottom: 30px;
+right: 30px;
+background: linear-gradient(45deg, #ff6b6b, #d6336c);
+color: #fff;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+ustify-content: center;
+font-size: 1.8rem;
+cursor: pointer;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+opacity: 0;
+pointer-events: none;
+}
+
+#back-to-top.show {
+opacity: 1;
+pointer-events: auto;
+animation: pulse 2s infinite;
+}
+
+#back-to-top:hover {
+transform: scale(1.15);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+}
+
+@media (max-width: 600px) {
+header h1 {
+font-size: 2rem;
+}
+
+.recipe summary {
+font-size: 1.6rem;
+}
+
+.recipe h3 {
+font-size: 1.2rem;
+}
+
+.recipe img {
+max-width: 85%;
+}
+
+body {
+padding: 1rem;
+}
+
+.recipe {
+padding: 0.8rem;
+}
+
+#back-to-top {
+width: 50px;
+height: 50px;
+font-size: 1.4rem;
+bottom: 20px;
+right: 20px;
+}
+
+footer {
+ font-size: 1rem;
+padding: 1.5rem;
+}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
+</style>
+</head>
+<body>
+<header>
+<h1>Receitas de Bolos Simples</h1>
+</header>
+
+<details class="recipe">
+<summary>Bolo de Chocolate 🍫</summary>
+<img src="images/chocolate.jpg" alt="Bolo de chocolate com cobertura cremosa">
+<h3>Ingredientes</h3>
+<ul>
+<li>2 xícaras de farinha de trigo</li>
+<li>1 xícara de cacau em pó</li>
+<li>1 ½ xícara de açúcar</li>
+<li>3 ovos</li>
+<li>1 xícara de leite</li>
+<li>½ xícara de óleo</li>
+<li>1 colher de sopa de fermento em pó</li>
+</ul>
+<h3>Modo de Preparo</h3>
+<ol>
+<li>Misture os ingredientes secos (farinha, cacau, açúcar, fermento) em uma tigela.</li>
+<li>Adicione os ovos, leite e óleo, e mexa até formar uma massa homogênea.</li>
+ <li>Despeje a massa em uma forma untada.</li>
+<li>Asse por 35-40 minutos ou até um palito sair limpo.</li>
+<li>Deixe esfriar e desenforme.</li>
+</ol>
+</details>
+
+<details class="recipe">
+<summary>Bolo de Limão 🍋</summary>
+<img src="images/limao.jpg" alt="Bolo de limão com cobertura de açúcar">
+<h3>Ingredientes</h3>
+<ul>
+           STRIP
+<li>2 xícaras de farinha de trigo</li>
+<li>1 ½ xícara de açúcar</li>
+<li>3 ovos</li>
+<li>½ xícara de suco de limão</li>
+<li>½ xícara de óleo</li>
+<li>1 colher de sopa de fermento em pó</li>
+<li>Raspas de 1 limão</li>
+</ul>
+
+<h3>Modo de Preparo</h3>
+<ol>
+<li>Preaqueça o forno a 180°C.</li>
+<li>Em uma tigela, bata os ovos com o açúcar até ficar cremoso.</li>
+<li>Adicione o suco de limão, óleo e raspas de limão, e misture.</li>
+<li>Incorpore a farinha e o fermento, mexendo delicadamente.</li>
+<li>Despeje em uma forma untada e asse por 35-40 minutos.</li>
+<li>Deixe esfriar e sirva com cobertura de açúcar de confeiteiro, se desejar.</li>
+</ol>
+</details>
+
+<details class="recipe">
+<summary>Bolo de Cenoura 🥕</summary>
+<img src="images/cenTploura.jpg" alt="Bolo de cenoura com cobertura de chocolate">
+<h3>Ingredientes</h3>
+<ul>
+<li>2 xícaras de farinha de trigo</li>
+<li>1 ½ xícaras de açúcar</li>
+<li>3 cenouras médias raladas</li>
+<li>3 ovos</li>
+<li>1 xícara de óleo</li>
+<li>1 colher de sopa de fermento em pó</li>
+</ul>
+
+<h3>Modo de Preparo</h3>
+<ol>
+<li>Preaqueça o forno a 180°C.</li>
+<li>No liquidificador, bata as cenouras, ovos e óleo até ficar homogêneo.</li>
+<li>Em uma tigela, misture a farinha, açúcar e fermento.</li>
+<li>Adicione a mistura do liquidificador à tigela e mexa bem.</li>
+<li>Despeje em uma forma untada e asse por 40-45 minutos.</li>
+<li>Deixe esfriar antes de servir.</li>
+</ol>
+</details>
+<details class="recipe">
+<summary>Bolo de Laranja 🍊</summary>
+<img src="images/laranja.jpg" alt="Bolo de laranja fofinho com calda cítrica">
+<h3>Ingredientes</h3>
+<ul>
+<li>2 xícaras de farinha de trigo</li>
+<li>1 ½ xícara de açúcar</li>
+<li>3 ovos</li>
+<li>¾ xícara de suco de laranja</li>
+<li>½ xícara de óleo</li>
+<li>1 colher de sopa de fermento em pó</li>
+<li>Raspas de 1 laranja</li>
+</ul>
+
+<h3>Modo de Preparo</h3>
+<ol>
+<li>Preaqueça o forno a 180°C.</li>
+<li>Bata os ovos e o açúcar em uma tigela até obter um creme claro.</li>
+<li>Adicione o suco de laranja, o óleo e as raspas de laranja, misturando bem.</li>
+<li>Incorpore a farinha de trigo e o fermento, mexendo delicadamente até a massa ficar homogênea.</li>
+<li>Despeje a massa em uma forma untada e asse por 35-40 minutos, ou até um palito sair limpo.</li>
+<li>Deixe esfriar e, se desejar, regue com uma calda de suco de laranja e açúcar.</li>
+</ol>
+</details>
+
+<details class="recipe">
+<summary>Bolo de Baunilha com Gotas de Chocolate 🌟</summary>
+<img src="images/baunilha.jpg" alt="Bolo de baunilha com gotas de chocolate">
+<h3>Ingredientes</h3>
+<ul>
+<li>2 xícaras de farinha de trigo</li>
+<li>1 ½ xícara de açúcar</li>
+<li>3 ovos</li>
+<li>1 xícara de leite</li>
+<li>½ xícara de manteiga derretida</li>
+<li>1 colher de sopa de fermento em pó</li>
+<li>1 colher de chá de essência de baunilha</li>
+<li>¾ xícara de gotas de chocolate</li>
+</ul>
+
+<h3>Modo de Preparo</h3>
+<ol>
+<li>Preaqueça o forno a 180°C.</li>
+<li>Em uma tigela, bata os ovos, o açúcar e a manteiga derretida até ficar cremoso.</li>
+<li>Adicione o leite e a essência de baunilha, misturando bem.</li>
+<li>Incorpore a farinha de trigo e o fermento, mexendo até a massa ficar homogênea.</li>
+<li>Adicione as gotas de chocolate e misture delicadamente.</li>
+<li>Despeje a massa em uma forma untada e asse por 35-40 minutos, ou até um palito sair limpo.</li>
+<li>Deixe esfriar antes de servir.</li>
+</ol>
+</details>
+
+<details class="recipe">
+<summary>Bolo de Coco 🥥</summary>
+<img src="images/coco.jpg" alt="Bolo de coco úmido com cobertura">
+<h3>Ingredientes</h3>
+<ul>
+<li>2 xícaras de farinha de trigo</li>
+<li>1 ½ xícara de açúcar</li>
+<li>3 ovos</li>
+<li>1 xícara de leite de coco</li>
+<li>½ xícara de óleo</li>
+<li>1 colher de sopa de fermento em pó</li>
+<li>½ xícara de coco ralado</li>
+</ul>
+
+<h3>Modo de Preparo</h3>
+<ol>
+<li>Preaqueça o forno a 180°C.</li>
+<li>Em uma tigela, bata os ovos e o açúcar até formar um creme leve.</li>
+<li>Adicione o leite de coco, o óleo e o coco ralado, misturando bem.</li>
+<li>Incorpore a farinha de trigo e o fermento, mexendo até a massa ficar 
+homogênea.</li>
+<li>Despeje a massa em uma forma untada e asse por 35-40 minutos, ou até um palito sair limpo.</li>
+<li>Deixe esfriar e, se desejar, polvilhe coco ralado por cima ou adicione uma cobertura de leite condensado.</li>
+</ol>
+</details>
+
+<footer>
+<p>© 2025 Receitas de Bolo Simples</p>
+</footer>
+
+<div id="back-to-top" title="Voltar ao topo">↑</div>
+
+<script>
+const backToTopButton = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+if (window.scrollY > 300) {
+backToTopButton.classList.add('show');
+} else {
+backToTopButton.classList.remove('show');
+}
+});
+
+backToTopButton.addEventListener('click', () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+</script>
+</body>
+</html>
+
